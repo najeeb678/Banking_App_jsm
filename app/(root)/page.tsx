@@ -1,40 +1,33 @@
-
-import HeaderBox from '@/components/HeaderBox';
-import TotalBalanceBox from '@/components/TotalBalanceBox';
-
-
+import HeaderBox from "@/components/HeaderBox";
+import RightSidebar from "@/components/RightSidebar";
+import TotalBalanceBox from "@/components/TotalBalanceBox";
 
 const Home = async () => {
-  
-  const loggedIn = {firstname: 'Adrian'}
-  
-
-
-
+  const loggedIn = { firstname: "Adrian" };
 
   return (
     <section className="home">
       <div className="home-content">
         <header className="home-header">
-          <HeaderBox 
+          <HeaderBox
             type="greeting"
             title="Welcome"
-            user={loggedIn?.firstname || 'Guest'}
+            user={loggedIn?.firstname || "Guest"}
             subtext="Access and manage your account and transactions efficiently."
           />
 
-          <TotalBalanceBox 
+          <TotalBalanceBox
             accounts={[]}
             totalBanks={1}
             totalCurrentBalance={1250.35}
           />
+
         </header>
-
-  
+        
       </div>
-
+      <RightSidebar user={loggedIn } transactions={[]} banks={[]} />
     </section>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
