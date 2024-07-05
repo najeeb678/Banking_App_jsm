@@ -198,12 +198,20 @@ export const authFormSchema = (type: string) =>
   z.object({
     // sign up
     // firstName: type === "sign-in" ? z.string().optional() : z.string().min(3, { message: "First Name is required" }),
-    firstName: type === "sign-in" ? z.string().optional() : z.string().nonempty({ message: "First Name is required" }).min(3, { message: "First Name must be at least 3 characters long" }),
+    firstName:
+      type === "sign-in"
+        ? z.string().optional()
+        : z
+            .string()
+            .nonempty({ message: "First Name is required" })
+            .min(3, {
+              message: "First Name must be at least 3 characters long",
+            }),
     lastName: type === "sign-in" ? z.string().optional() : z.string().min(3),
     address1: type === "sign-in" ? z.string().optional() : z.string().max(50),
     city: type === "sign-in" ? z.string().optional() : z.string().max(50),
     state:
-      type === "sign-in" ? z.string().optional() : z.string().min(2).max(2),
+      type === "sign-in" ? z.string().optional() : z.string().min(2).max(20),
     postalCode:
       type === "sign-in" ? z.string().optional() : z.string().min(3).max(6),
     dateOfBirth: type === "sign-in" ? z.string().optional() : z.string().min(3),
